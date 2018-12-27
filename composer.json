@@ -1,0 +1,12 @@
+{
+    "name": "luolongfei/test-github",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "luolongfei",
+            "email": "l-luo@onetapbuy.co.jp"
+        }
+    ],
+    "require": {}
+}
