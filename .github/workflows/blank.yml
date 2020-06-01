@@ -20,14 +20,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    steps:
+      - name: 拉取主分支代码
+        uses: actions/checkout@master
+      - name: 创建PHP环境
+        uses: franzliedke/gh-action-php@master
+      - name: 写入配置文件
+        run: |
+          sed -i "s/FREENOM_USERNAME=593198779@qq.com/FREENOM_USERNAME='${{ secrets.FREENOM_USERNAME }}'/" fuck.env
+          cat fuck.env
+      - name: 开始运行
+        run: |
+          php7.2 --version
