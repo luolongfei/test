@@ -19,14 +19,14 @@ jobs:
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     steps:
-      - name: 拉取主分支代码
+      - name: 检出主分支
         uses: actions/checkout@master
       - name: 创建PHP环境
         uses: franzliedke/gh-action-php@master
       - name: 写入配置文件
         run: |
-          sed -i "s/^FREENOM_USERNAME=.*?$/FREENOM_USERNAME='${{ secrets.FREENOM_USERNAME }}'/" fuck.env
-          sed -i "s/^FREENOM_PASSWORD=.*?$/FREENOM_PASSWORD='${{ secrets.FREENOM_USERNAME }}'/" fuck.env
+          if [ '${{ secrets.FREENOM_USERNAME }}' != '' ]; then sed -i "s/^FREENOM_USERNAME=.*$/FREENOM_USERNAME='嘿嘿'/" fuck.env; else echo '保持默认值'; fi
+          if [ '${{ secrets.FUCK }}' != '' ]; then sed -i "s/^FREENOM_USERNAME=.*$/FREENOM_USERNAME='嘿嘿'/" fuck.env; else echo '你没有设置 FUCK 值！'; fi
           cat fuck.env
       - name: 开始运行
         run: |
