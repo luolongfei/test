@@ -39,7 +39,7 @@ jobs:
           if [ '${{ secrets.TELEGRAM_CHAT_ID }}' != '' ]; then sed -i "s/^TELEGRAM_CHAT_ID=.*$/TELEGRAM_CHAT_ID='${{ secrets.TELEGRAM_CHAT_ID }}'/" .env; fi
           if [ '${{ secrets.TELEGRAM_BOT_TOKEN }}' != '' ]; then sed -i "s/^TELEGRAM_BOT_TOKEN=.*$/TELEGRAM_BOT_TOKEN='${{ secrets.TELEGRAM_BOT_TOKEN }}'/" .env; fi
           if [ '${{ secrets.noticeFreq }}' != '' ]; then sed -i "s/'noticeFreq' => .*,/'noticeFreq' => '${{ secrets.noticeFreq }}',/" config.php; fi
-          cat fuck.env
+          cat .env
       - name: 开始运行
         run: |
           php7.2 --version
